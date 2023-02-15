@@ -36,18 +36,21 @@ body {
     line-height: 120%;
     color: var(--text-dark);
     min-height: 100vh;
+    scroll-behavior: smooth;
 }
 /* Typography */
 .heading-primary {
     font-size: 6rem;
     font-weight: 700;
     color: var(--text-dark);
+    line-height: 120%;
 
 }
 .heading-secondry {
     font-size: 2.6rem;
     font-weight: 700;
     color: inherit;
+    line-height: 120%;
 }
 .heading-tertiary {
     font-size: 1.6rem;
@@ -139,8 +142,21 @@ body {
     color: var(--primary)
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .header {
+    position: sticky;
+
 }
 
 .intro {
@@ -225,6 +241,10 @@ padding: 1rem;
 .header-icon {
 padding-right: 1rem;
 }
+
+
+/* Motto Section */
+
 .motto-section {
     margin: 2rem 0 0 10rem;
     display: flex;
@@ -360,10 +380,10 @@ padding-right: 1rem;
 }
 .slide1-4 {
     width: 32rem;
-    height: 27rem;
+    height: 25rem;
     border-radius: 2rem;
     position: absolute;
-    left: -6rem;
+    left: -4rem;
     bottom: -12rem;
 
 }
@@ -392,27 +412,274 @@ padding-right: 1rem;
     }
 }
 
+
+/* Product Section */
 .product-section {
     margin-top: 8rem;
 }
-.zoom-products {
+
+.products {
+    height: 100vh;
+    position: relative;
+    background-color: var(--bg-dark);
+    transition: all .5s;
+
+}
+
+.products--after {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* padding-right: calc(100% - 50rem); */
+}
+
+.icon-container {
     background-color: var(--primary);
     text-align: center;
-    width: 100%;
-    height: 15vh;
+    position: absolute;
+    left:0;
+    top:0;
+    height: 20vh;
+    width: 50rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.icon-container--after {
+position: relative;
 }
 .zoom-image {
-    width: 60%;
+    width: 80%;
     height: 6rem;
     margin: auto 2rem;
+    object-fit: contain;
 }
+
 .product-intro {
-    background-color: var(--bg-dark);
+    /* background-color: var(--bg-dark); */
     color: var(--text-light);
-    text-align: center;
-    padding: 2rem 1rem;
-    height: 8vh
+    padding: 3rem 2rem;
+    padding-left: 52rem;  
+    height: 80vh;
+    transition: all .5s;
+
 }
+.product-intro--after {
+    margin: 4rem 2rem 4rem 9rem;
+    padding: 4rem;
+
+}
+.product-text--after {
+    width: 30rem;
+}
+/*  
+#5174ae, #1a284d
+
+#7ec5c5, #22374a
+
+#b09ace, #312d4f
+
+#c8986e, #3c2f37
+
+#c0738d, #39243f
+
+*/
+.product-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 2rem 0rem; */
+    padding: 2rem 0rem;
+    margin: 4rem 0rem;
+    font-size: 2rem;
+    transition: all .5s;
+}
+
+
+.product-list--after {
+    flex-direction: column;
+    font-size: 1.8rem;
+    align-items: flex-start;
+}
+
+.product-list > li {
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.product-item1 {
+    border: 1px solid #5174ae;
+    background-color: #1a284d;
+    position: absolute;
+    transition: all .5s;
+    left: 52rem;
+    top: 8rem;
+    animation: animate-item1 .85s linear .5s forwards;
+    /* animation-play-state: paused; */
+}
+
+.product-item2 {
+    border: 1px solid #7ec5c5;
+    background-color: #22374a;
+    position: absolute;
+    animation: animate-item2 .85s linear .5s forwards;
+    transition: all .5s;
+    left: 66rem;
+    top: 8rem;
+    animation-play-state: paused;
+}
+
+.product-item3 {
+    border: 1px solid #b09ace;
+    background-color: #312d4f;
+    position: absolute;
+    animation: animate-item3 .85s linear .5s forwards;
+    transition: all .5s;
+    left: 82rem;
+    top: 8rem;
+    animation-play-state: paused;
+
+}
+
+.product-item4 {
+    border: 1px solid #c8986e;
+    background-color: #3c2f37;
+    position: absolute;
+    animation: animate-item4 .85s linear .5s forwards;
+    transition: all .5s;
+    left: 98.5rem;
+    top: 8rem;
+    animation-play-state: paused;
+
+}
+
+.product-item5 {
+    border: 1px solid #5174ae;
+    background-color: #39243f;
+    position: absolute;
+    animation: animate-item5 .85s linear .5s forwards;
+    transition: all .5s;
+    left: 119rem;
+    top: 8rem;
+    animation-play-state: paused;
+
+}
+.animateItemsForward {
+    animation-play-state: running;
+}
+
+@keyframes animate-item1 {
+    0% {
+        left: 52rem;
+        top: 8rem;
+    }
+    100% {
+        top: 35rem;
+        left:14rem;
+    }
+}
+
+.animateItemsBackward1 {
+    transform: translate(38rem, -27rem);
+    transition: translate .85s linear;
+}
+
+@keyframes animate-item2 {
+    0% {
+        left: 66rem;
+        top: 8rem;
+    }
+    100% {
+        top: 40rem;
+        left:14rem;
+    }
+}
+.animateItemsBackward2 {
+    transform: translate(52rem, -32rem);
+    transition: translate .85s linear;
+}
+
+@keyframes animate-item3 {
+    0% {
+        top: 8rem;
+        left: 82rem;
+    }
+    100% {
+        top: 45rem;
+        left:14rem;
+    }
+}
+.animateItemsBackward3 {
+    transform: translate(68rem, -37rem);
+    transition: translate .85s linear;
+}
+@keyframes animate-item4 {
+    0% {
+        top: 8rem;
+        left: 98.5rem;
+    }
+    100% {
+        top: 50rem;
+        left:14rem;
+    }
+}
+.animateItemsBackward4 {
+    transform: translate(84.5rem, -42rem);
+    transition: translate .85s linear;
+}
+@keyframes animate-item5 {
+    0% {
+        left: 119rem;
+        top: 8rem;
+    }
+    100% {
+        left:14rem;
+        top: 55rem;
+    }
+}
+.animateItemsBackward5 {
+    transform: translate(105rem, -47rem);
+    transition: translate .85s linear;
+}
+
+/* .product-item1 {
+    position: absolute;
+    top: 0;
+    border: 1px solid #5174ae;
+    background-color: #1a284d;
+
+}
+.product-item2 {
+    position: absolute;
+    top: 5rem;
+    border: 1px solid #7ec5c5;
+    background-color: #22374a;
+
+}
+.product-item3 {
+    position: absolute;
+    top: 10rem;
+    border: 1px solid #b09ace;
+    background-color: #312d4f;
+
+}
+.product-item4 {
+    position: absolute;
+    top: 15rem;
+    border: 1px solid #c8986e;
+    background-color: #3c2f37;
+
+}
+.product-item5 {
+    position: absolute;
+    top: 20rem;
+    border: 1px solid #5174ae;
+    background-color: #39243f;
+
+} */
