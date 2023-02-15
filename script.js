@@ -37,7 +37,6 @@ searchInput.addEventListener("input", onChangeSearch);
 
 // change keyword and image on timebar
 
-const varKey = ["connect", "create", "innovate"];
 const slideObject = [
   {
     varKey: "connect",
@@ -102,7 +101,7 @@ const funcToCall = () => {
 //start the time bar caount and keep reapeating it
 const timeBarStart = () => {
   const timeBar = document.getElementById("time-bar");
-  const animationDuration = "5s";
+  const animationDuration = "6s";
   const timebarInner = document.createElement("div");
   timebarInner.className = "time-bar--inner";
   timebarInner.style.animationDuration = animationDuration;

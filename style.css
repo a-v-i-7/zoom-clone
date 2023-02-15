@@ -288,12 +288,11 @@ padding-right: 1rem;
 
 }
 .time-bar--inner {
-    content: "";
     height: 100%;
     background-color: var(--primary);
     position: absolute;
     left: 0;
-    animation: progressbar 5s linear 1s infinite;
+    animation: progressbar 6s linear 1s infinite;
 }
 
 @keyframes progressbar {
@@ -323,9 +322,6 @@ padding-right: 1rem;
     margin-top:5rem;
 }
 
-
-
-
 .swipper {
     background-color: var(--background-light);
     /* background-color: red; */
@@ -350,7 +346,7 @@ padding-right: 1rem;
     position: absolute;
     left: 8rem;
     top: 8rem;
-    animation: ltright 6s linear 1s infinite forwards;
+    animation: ltright 6s linear 1s infinite;
 
 }
 .slide1-3 {
@@ -359,7 +355,7 @@ padding-right: 1rem;
     position: absolute;
     left: 29rem;
     top: 33.5rem;
-    animation: rtleft 6s linear 1s infinite forwards;
+    animation: rtleft 6s linear 1s infinite;
 
 }
 .slide1-4 {
@@ -375,8 +371,12 @@ padding-right: 1rem;
     0% {
         left: 5rem;
     }
+    50% {
+
+        left: 8rem;
+    }
     100% {
-        left: 8
+        left: 8rem;
     }
 }
 
@@ -384,8 +384,11 @@ padding-right: 1rem;
     0% {
         left: 32rem;
     }
-    100% {
-        left: 29
+    50% {
+        left: 29rem;
+    }
+    100%{
+        left:29rem;
     }
 }
 
