@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/2e8637fb2b.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Zoom Clone</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="intro">
+      <ul class="contact-us">
+        <div class="search-box" id="search-box">
+          <svg role="button" id="search-glass" class="search-glass" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            width="20" height="20" viewBox="0 0 20 20">
+            <title>magnifying-glass</title>
+            <path
+              d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z">
+            </path>
+          </svg>
+
+          <input type="text" name="search" class="search-input" placeholder="Enter Search Here" id="search-input">
+          <button class="cross-input" id="close-input" onclick="hideSearchBox()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <title>close</title>
+              <path
+                d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <li class="search-button" role="button" id="search-button" onclick="showSearchBox()">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <title>magnifying-glass</title>
+            <path fill="#fff"
+              d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z">
+            </path>
+          </svg>
+          <div>Search</div>
+        </li>
+        <li>000.800.050.2040</li>
+        <li>1.888.799.9666</li>
+        <li>Request a Demo</li>
+        <li>
+          <span style="border-left: 1px solid rgba(255, 255, 255, 0.25)"></span>
+        </li>
+        <li>join</li>
+        <li>Host</li>
+        <li>Sign In</li>
+      </ul>
+    </div>
+    <div class="nav">
+      <object class="header-icon" type="image/svg+xml" data="img/svg/zoom_logo.svg"></object>
+      <h3 class="heading-tertiary">Products</h3>
+      <h3 class="heading-tertiary">Solutions</h3>
+      <h3 class="heading-tertiary">Resources</h3>
+      <h3 class="heading-tertiary">Plans & Pricing</h3>
+      <button class="btn-primary ml-auto">Contact Sales</button>
+      <button class="btn-primary btn-primary--filled">Sign Up Free</button>
+    </div>
+  </header>
+  <section class="motto-section">
+    <div class="motto">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="notification">
+        <span>
+          <svg class="notif-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+            fill="none">
+            <circle cx="10" cy="10" r="10" fill="#90E0E0"></circle>
+            <g clip-path="url(#clip0_1345_66711)">
+              <path
+                d="M13.5 7.66675C13.5 6.73849 13.1313 5.84825 12.4749 5.19187C11.8185 4.5355 10.9283 4.16675 10 4.16675C9.07174 4.16675 8.1815 4.5355 7.52513 5.19187C6.86875 5.84825 6.5 6.73849 6.5 7.66675C6.5 11.7501 4.75 12.9167 4.75 12.9167H15.25C15.25 12.9167 13.5 11.7501 13.5 7.66675Z"
+                stroke="#00031F" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M11.0091 15.2501C10.9065 15.4269 10.7593 15.5737 10.5822 15.6757C10.4051 15.7777 10.2043 15.8314 9.99989 15.8314C9.7955 15.8314 9.5947 15.7777 9.41759 15.6757C9.24048 15.5737 9.09328 15.4269 8.99072 15.2501"
+                stroke="#00031F" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_1345_66711">
+                <rect width="14" height="14" fill="white" transform="translate(2.99976 3.00009)"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+          <span class="text" Get the scoop>New! Consumers want more from customer support</span>
+          <span class="divider"></span>
+          <span class="link">
+            Get the Scoop
+            <svg class="angle-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24">
+              <title>keyboard_arrow_right</title>
+              <path d="M8.578 16.594l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+            </svg>
+
+          </span>
+        </span>
+      </a>
+      <div class="time-bar" id="time-bar">
+      </div>
+      <h1 class="motto-line heading-primary" id="motto-line">
+        One platform <br> to
+        <span id="var-key" class="heading-primary clr-primary">connect</span>
+      </h1>
+      <p class="text desc">
+        Bring teams together, reimagine workspaces, engage new audiences, and delight your customers — all on the Zoom
+        platform you know and love.
+      </p>
+      <div class="price-box">
+        <button class="btn-primary btn-primary--filled">
+          Plans & Pricing
+        </button>
+        <button class="btn-text">
+          Sign Up, It`s Free
+        </button>
+      </div>
+    </div>
+    <div class="swipper">
+      <div class="slide1">
+        <img class="slide1-1" src="/img/slide1-1.jpg" alt="#">
+        <img class="slide1-2" src="img/slide1-2.png" alt="#">
+        <img class="slide1-3" src="img/slide1-3.png" alt="#">
+        <img class="slide1-4" src="/img/slide1-4.jpg" alt="#">
+      </div>
+    </div>
+  </section>
+  <section class="product-section">
+    <div class="zoom-products">
+      <img class="zoom-image" src="img/zoom-products.png" alt="#">
+
+    </div>
+    <div class="product-intro">
+      <h2 class="heading-secondry">Flexible Solutions for team collabration</h2>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>
