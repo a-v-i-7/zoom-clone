@@ -110,10 +110,12 @@ const timeBarStart = () => {
 
   timeBar.appendChild(timebarInner);
 };
-// window.addEventListener("load", timeBarStart);
+window.addEventListener("load", timeBarStart);
 
 let productAnimated = false;
 const animateProductSection = () => {
+  productAnimated = true;
+
   const products = document.querySelector("#products");
   const pi = document.querySelector("#product-intro");
   const pl = document.querySelector("#product-list");
@@ -125,20 +127,20 @@ const animateProductSection = () => {
   const pi3 = document.querySelector(".product-item3");
   const pi4 = document.querySelector(".product-item4");
   const pi5 = document.querySelector(".product-item5");
+
   products.classList.add("products--after");
   pl.classList.add("product-list--after");
   ic.classList.add("icon-container--after");
   pi.classList.add("product-intro--after");
   pt.classList.add("product-text--after");
-  if(pi1.classList.contains("animateItemsBackward1")) {
 
+  if (pi1.classList.contains("animateItemsBackward1")) {
     pi1.classList.replace("animateItemsBackward1", "animateItemsForward");
     pi2.classList.replace("animateItemsBackward2", "animateItemsForward");
     pi3.classList.replace("animateItemsBackward3", "animateItemsForward");
     pi4.classList.replace("animateItemsBackward4", "animateItemsForward");
     pi5.classList.replace("animateItemsBackward5", "animateItemsForward");
-  }
-  else {
+  } else {
     pi1.classList.add("animateItemsForward");
     pi2.classList.add("animateItemsForward");
     pi3.classList.add("animateItemsForward");
@@ -146,64 +148,93 @@ const animateProductSection = () => {
     pi5.classList.add("animateItemsForward");
   }
 
-// Set product width on animation end.
+  // set product animated global value.
+
+  // Set product width on animation end.
   const onAnimationEnd = () => {
     pi1.removeEventListener("transitionend", onAnimationEnd);
     console.log("pi is over");
-    products.style.width = "50rem";
-  }
+    productAnimated && (products.style.width = "50rem");
+  };
   pi5.addEventListener("transitionend", onAnimationEnd);
-
-  // set product animated global value.
-  productAnimated = true;
 };
 
 // Revert to original Product Section.
 const cancelProductSectionAnimation = () => {
+  productAnimated = false;
+
   const products = document.querySelector("#products");
   products.style.width = "100%";
-  
+
   const pi = document.querySelector("#product-intro");
   const pl = document.querySelector("#product-list");
   const ic = document.querySelector("#icon-container");
-  const pi1 = document.querySelector(".product-item1");
   const pt = document.querySelector("#product-text");
 
+  const pi1 = document.querySelector(".product-item1");
   const pi2 = document.querySelector(".product-item2");
   const pi3 = document.querySelector(".product-item3");
   const pi4 = document.querySelector(".product-item4");
   const pi5 = document.querySelector(".product-item5");
 
-  
   pi1.classList.replace("animateItemsForward", "animateItemsBackward1");
   pi2.classList.replace("animateItemsForward", "animateItemsBackward2");
   pi3.classList.replace("animateItemsForward", "animateItemsBackward3");
   pi4.classList.replace("animateItemsForward", "animateItemsBackward4");
   pi5.classList.replace("animateItemsForward", "animateItemsBackward5");
 
-  console.log("i am cancelling");
-  // pi1.classList.toggle();
-  // pi2.style.animationDirection = "reverse";
-  // pi3.style.animationDirection = "reverse";
-  // pi4.style.animationDirection = "reverse";
-  // pi5.style.animationDirection = "reverse";
   products.classList.remove("products--after");
   pl.classList.remove("product-list--after");
   ic.classList.remove("icon-container--after");
   pi.classList.remove("product-intro--after");
   pt.classList.remove("product-text--after");
-
-  productAnimated = false;
 };
 
 // Scroll Position --- 95
 document.addEventListener("scroll", (scroll) => {
-  // console.log("scroll", productAnimated);
-
+  console.log(this.scrollY);
   if (this.scrollY > 95) {
     !productAnimated && animateProductSection();
   } else if (this.scrollY < 50) {
     productAnimated && cancelProductSectionAnimation();
   }
-  // console.log(this.scrollY);
 });
+
+const slides = document.querySelectorAll(".product-detail");
+slides.forEach((slide, index) => {
+  slide.style.transform = `translateX(${index * 100}%)`;
+});
+
+const showSlide1 = () => {
+  window.scrollTo(0, 740);
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(${index * 100}%)`;
+  });
+};
+
+const showSlide2 = () => {
+  window.scrollTo(0, 740);
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(calc(${(index - 1) * 100}% + 40px))`;
+  });
+};
+
+const showSlide3 = () => {
+  window.scrollTo(0, 740);
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(calc(${(index - 2) * 100}% + 20px))`;
+  });
+};
+
+const showSlide4 = () => {
+  window.scrollTo(0, 740);
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(calc(${(index - 3) * 100}% + 20px))`;
+  });
+};
+const showSlide5 = () => {
+  window.scrollTo(0, 740);
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(calc(${(index - 4) * 100}% + 20px))`;
+  });
+};
