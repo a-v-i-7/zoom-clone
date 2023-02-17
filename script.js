@@ -18,7 +18,6 @@ const hideSearchBox = () => {
 };
 
 //Add Event Listener to SEARCH INPUT
-
 const searchInput = document.getElementById("search-input");
 const onChangeSearch = (e) => {
   const searchButton = document.getElementById("search-glass");
@@ -35,8 +34,7 @@ const onChangeSearch = (e) => {
 };
 searchInput.addEventListener("input", onChangeSearch);
 
-// change keyword and image on timebar
-
+// change keyword and image on timebar of motto section
 const slideObject = [
   {
     varKey: "connect",
@@ -112,6 +110,7 @@ const timeBarStart = () => {
 };
 window.addEventListener("load", timeBarStart);
 
+// Product Animation
 let productAnimated = false;
 const animateProductSection = () => {
   productAnimated = true;
@@ -200,17 +199,28 @@ document.addEventListener("scroll", (scroll) => {
   }
 });
 
+// Slide control
+
+// Set initial slide position on loading.
+
 const slides = document.querySelectorAll(".product-detail");
+
 slides.forEach((slide, index) => {
   slide.style.transform = `translateX(${index * 100}%)`;
 });
 
-const showSlide1 = () => {
+function showSlides(slideCount) {
   window.scrollTo(0, 740);
+  if (slideCount == 0) {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${index * 100}%)`;
+    });
+    return;
+  }
   slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(${index * 100}%)`;
+    slide.style.transform = `translateX(calc(${(index - slideCount) * 100}% + 40px))`;
   });
-};
+}
 
 const showSlide2 = () => {
   window.scrollTo(0, 740);
@@ -219,22 +229,83 @@ const showSlide2 = () => {
   });
 };
 
-const showSlide3 = () => {
-  window.scrollTo(0, 740);
-  slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(calc(${(index - 2) * 100}% + 20px))`;
-  });
-};
 
-const showSlide4 = () => {
-  window.scrollTo(0, 740);
-  slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(calc(${(index - 3) * 100}% + 20px))`;
-  });
-};
-const showSlide5 = () => {
-  window.scrollTo(0, 740);
-  slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(calc(${(index - 4) * 100}% + 20px))`;
-  });
-};
+const serviceData = [
+  {
+    img: "",
+    heading: "Because learning happens everywhere",
+    desc: "Design remote and hybrid learning environments, empower teachers and students, and create more equitable educational opportunities.",
+    title: "Zoom for Education",
+    data: "89- of the top 100 global universities choose Zoom"
+  },
+  {
+    img: "",
+    heading: "Trusted solutions for the finance sector",
+    desc: "Secure communications and collaboration technology designed for a complex regulatory landscape.",
+    title: "Zoom for Financial Services",
+    data: "8- Of the 10 largest U.S. Banks choose Zoom"
+  },
+  {
+    img: "",
+    heading: "Communications for the people",
+    desc: "Improve access and information sharing, build stronger relationships, and better serve your constituents.",
+    title: "Zoom for Government",
+    data: "87%- of government workers felt favorable toward Zoom for video communications",
+    dataType: "percent"
+  },
+  {
+    img: "",
+    heading: "Connect everyone in your health organization",
+    desc: "Communicate across the continuum of care, meet patients where they are, and enable an agile, connected workforce.",
+    title: "Zoom for Healthcare",
+    data: "9- of the Top 10 U.S. Hospitals Choose Zoom"
+  },
+  {
+    img: "",
+    heading: "Real-time communication, anywhere in the world",
+    desc: "Reliably connect global staff, designers, factories, supply chains, and more to keep production moving.",
+    title: "Zoom for Manufacturing",
+    data: "7- of the 10 top global pharmaceutical companies choose Zoom"
+  },
+  {
+    img: "",
+    heading: "Bridging the in-store and online experiences",
+    desc: "Use video to reimagine e-commerce and unlock new revenue opportunities.",
+    title: "Zoom for Retail",
+    data: "8- of the top 10 largest U.S. retailers choose Zoom"
+  }
+]
+const openServiceCard = (cardNumber) => {
+  const productRightSection = document.querySelector(".right-section");
+  const serviceDetail = document.querySelector(".service-detail");
+  const serviceList = document.querySelectorAll(".service-card");
+
+  productRightSection.style.flexBasis = "25%";
+  serviceDetail.style.zIndex = 100;
+
+  // change color and bg on click
+  serviceList.forEach((service, index) => {
+    if(index==cardNumber) {
+      service.style.backgroundColor=rootStyle.getPropertyValue("--primary");
+      service.style.color=rootStyle.getPropertyValue("--text-light");
+      return;
+    }
+    service.style.backgroundColor=rootStyle.getPropertyValue("--background-light");
+    service.style.color=rootStyle.getPropertyValue("--text-dark");
+  })
+
+  const serviceImage = document.querySelector("#service-image");
+  const serviceTitle = document.querySelector("#service-title");
+  const serviceDesc = document.querySelector("#service-desc");
+  const serviceStat = document.querySelector("#service-stat");
+  const servicePara = document.querySelector("#service-para");
+  const serviceBtn = document.querySelector("#service-btn");
+
+  // serviceImage.src = serviceData[cardNumber].img;
+  serviceTitle.innerText = serviceData[cardNumber].heading;
+  serviceDesc.innerText = serviceData[cardNumber].desc;
+  serviceBtn.innerText = serviceData[cardNumber].title;
+  serviceStat.innerText = serviceData[cardNumber].data.split("-")[0];
+  servicePara.innerText  = serviceData[cardNumber].data.split("-")[1];
+
+}

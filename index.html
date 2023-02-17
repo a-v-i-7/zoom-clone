@@ -139,11 +139,11 @@
       <div class="product-intro" id="product-intro">
         <h2 class="heading-secondry" id="product-text">Flexible solution for modern team collabration.</h2>
         <ul class="product-list" id="product-list">
-          <li><button class="product-btn product-item1" onClick="showSlide1()">Zoom One </button> </li>
-          <li><button class="product-btn product-item2" onClick="showSlide2()">Zoom Space </button> </li>
-          <li><button class="product-btn product-item3" onClick="showSlide3()">Zoom Events </button> </li>
-          <li><button class="product-btn product-item4" onClick="showSlide4()">Zoom Developers </button> </li>
-          <li><button class="product-btn product-item5" onClick="showSlide5()">Zoom Contact Center</button>  </li>
+          <li><button class="product-btn product-item1" onClick="showSlides('0')">Zoom One </button> </li>
+          <li><button class="product-btn product-item2" onClick="showSlides('1')">Zoom Space </button> </li>
+          <li><button class="product-btn product-item3" onClick="showSlides('2')">Zoom Events </button> </li>
+          <li><button class="product-btn product-item4" onClick="showSlides('3')">Zoom Developers </button> </li>
+          <li><button class="product-btn product-item5" onClick="showSlides('4')">Zoom Contact Center</button> </li>
         </ul>
       </div>
     </div>
@@ -156,7 +156,7 @@
           <h2 class="heading-secondry">
             Unified communication
           </h2>
-          <p class="text">meaningful connection  in one
+          <p class="text">meaningful connection in one
             offering.</p>
           <div class="product-features">
             <div class="feature">
@@ -416,6 +416,87 @@
           <button class="btn-primary discover-product">
             Discover Zoom One
           </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="service-section">
+    <div class="service-inner">
+      <div class="left-section">
+        <div class="desc-container">
+          <h2 class="heading-secondry">
+            Powering organisation across industries and geographies
+          </h2>
+          <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quasi similique illo deleniti,
+            deserunt qui aperiam sunt minus magni provident labore, est eos dolore dolor omnis ad facere doloribus
+            debitis?</p>
+          <button class="btn-secondry">Explore Industry Solutions</button>
+        </div>
+      </div>
+      <div class="right-section">
+        <ul class="service-list">
+          <li>
+            <div class="service-card" onclick="openServiceCard('0')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-education"></use>
+              </svg>
+              <h3 class="heading-tertiary">Education</h3>
+            </div>
+          </li>
+          <li>
+            <div class="service-card" onclick="openServiceCard('1')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-wallet"></use>
+              </svg>
+              <h3 class="heading-tertiary service-heading">Financial Services</h3>
+            </div>
+          </li>
+          <li>
+            <div class="service-card" onclick="openServiceCard('2')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-building-o"></use>
+              </svg>
+              <h3 class="heading-tertiary">Government</h3>
+            </div>
+          </li>
+          <li>
+            <div class="service-card" onclick="openServiceCard('3')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-health"></use>
+              </svg>
+              <h3 class="heading-tertiary">Healthcare</h3>
+            </div>
+          </li>
+          <li>
+            <div class="service-card" onclick="openServiceCard('4')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-gears"></use>
+              </svg>
+              <h3 class="heading-tertiary">Manufacturing</h3>
+            </div>
+          </li>
+          <li>
+            <div class="service-card" onclick="openServiceCard('5')">
+              <svg class="service-icon">
+                <use xlink:href="img/sprite-2.svg#icon-tags"></use>
+              </svg>
+              <h3 class="heading-tertiary">Retail</h3>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="service-detail">
+      <img id="service-image" src="img/product-image1.jfif" alt="#" class="service-img">
+      <div class="service-desc">
+        <h2 id="service-title" class="heading-secondry">Because learning happens everywhere</h2>
+        <p id="service-desc" class="big-text">Design remote and hybrid learning environments, empower teachers and students, and create more
+          equitable educational opportunities.
+        </p>
+        <button id="service-btn" class="btn-primary">Zoom for</button>
+        <div class="service-data">
+          <div id="service-stat" class="data">89</div>
+          <p id="service-para">of the Top 100 global universities choose Zoom </p>
         </div>
       </div>
     </div>
