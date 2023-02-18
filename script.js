@@ -55,7 +55,7 @@ const slideObject = [
     img2Height: "8",
     img3: "img/slide2-3.png",
     img3Width: "25.5",
-    img3Height: "6",
+    img3Height: "8",
     img4: "/img/slide2-4.jpg",
   },
   {
@@ -63,7 +63,7 @@ const slideObject = [
     img1: "/img/slide3-1.jpg",
     img2: "img/slide3-2.png",
     img2Width: "25",
-    img2Height: "9",
+    img2Height: "10",
     img3: "img/slide3-3.png",
     img3Width: "15",
     img3Height: "10.5",
@@ -191,8 +191,8 @@ const cancelProductSectionAnimation = () => {
 
 // Scroll Position --- 95
 document.addEventListener("scroll", (scroll) => {
-  console.log(this.scrollY);
-  if (this.scrollY > 95) {
+  console.log(window.innerWidth);
+  if (this.scrollY > 95 && window.innerWidth > 1025) {
     !productAnimated && animateProductSection();
   } else if (this.scrollY < 50) {
     productAnimated && cancelProductSectionAnimation();
@@ -210,15 +210,30 @@ slides.forEach((slide, index) => {
 });
 
 function showSlides(slideCount) {
-  window.scrollTo(0, 740);
-  if (slideCount == 0) {
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translateX(${index * 100}%)`;
-    });
-    return;
-  }
+  const buttons = document.querySelectorAll(".product-btn");
+  const zoomSpans = document.querySelectorAll(".zoom-span");
+  // Set Button Style
+  buttons.forEach((button, index) => {
+    // No Change in style od first button
+    if (index == 0) return;
+    //Check cond from 2nd button
+    if (index == parseInt(slideCount)) {
+      button.classList.add(`active${parseInt(slideCount)}`);
+      zoomSpans[slideCount - 1].style.display = "inline";
+      return;
+    }
+    // Revert buttons to original form if other buttons are clicked.
+    button.classList.remove(`active${parseInt(index)}`);
+    zoomSpans[index - 1].style.display = "none";
+  });
+  // If animation hapened i.e. screen is bigger than 1000px
+  productAnimated && window.scrollTo(0, 740);
+
+  // No margin while translation.
   slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(calc(${(index - slideCount) * 100}% + 40px))`;
+    slide.style.transform = `translateX(calc(${
+      (index - slideCount) * 100
+    }% ))`;
   });
 }
 
@@ -229,21 +244,20 @@ const showSlide2 = () => {
   });
 };
 
-
 const serviceData = [
   {
     img: "",
     heading: "Because learning happens everywhere",
     desc: "Design remote and hybrid learning environments, empower teachers and students, and create more equitable educational opportunities.",
     title: "Zoom for Education",
-    data: "89- of the top 100 global universities choose Zoom"
+    data: "89- of the top 100 global universities choose Zoom",
   },
   {
     img: "",
     heading: "Trusted solutions for the finance sector",
     desc: "Secure communications and collaboration technology designed for a complex regulatory landscape.",
     title: "Zoom for Financial Services",
-    data: "8- Of the 10 largest U.S. Banks choose Zoom"
+    data: "8- Of the 10 largest U.S. Banks choose Zoom",
   },
   {
     img: "",
@@ -251,30 +265,30 @@ const serviceData = [
     desc: "Improve access and information sharing, build stronger relationships, and better serve your constituents.",
     title: "Zoom for Government",
     data: "87%- of government workers felt favorable toward Zoom for video communications",
-    dataType: "percent"
+    dataType: "percent",
   },
   {
     img: "",
     heading: "Connect everyone in your health organization",
     desc: "Communicate across the continuum of care, meet patients where they are, and enable an agile, connected workforce.",
     title: "Zoom for Healthcare",
-    data: "9- of the Top 10 U.S. Hospitals Choose Zoom"
+    data: "9- of the Top 10 U.S. Hospitals Choose Zoom",
   },
   {
     img: "",
     heading: "Real-time communication, anywhere in the world",
     desc: "Reliably connect global staff, designers, factories, supply chains, and more to keep production moving.",
     title: "Zoom for Manufacturing",
-    data: "7- of the 10 top global pharmaceutical companies choose Zoom"
+    data: "7- of the 10 top global pharmaceutical companies choose Zoom",
   },
   {
     img: "",
     heading: "Bridging the in-store and online experiences",
     desc: "Use video to reimagine e-commerce and unlock new revenue opportunities.",
     title: "Zoom for Retail",
-    data: "8- of the top 10 largest U.S. retailers choose Zoom"
-  }
-]
+    data: "8- of the top 10 largest U.S. retailers choose Zoom",
+  },
+];
 const openServiceCard = (cardNumber) => {
   const productRightSection = document.querySelector(".right-section");
   const serviceDetail = document.querySelector(".service-detail");
@@ -285,14 +299,15 @@ const openServiceCard = (cardNumber) => {
 
   // change color and bg on click
   serviceList.forEach((service, index) => {
-    if(index==cardNumber) {
-      service.style.backgroundColor=rootStyle.getPropertyValue("--primary");
-      service.style.color=rootStyle.getPropertyValue("--text-light");
+    if (index == cardNumber) {
+      service.style.backgroundColor = rootStyle.getPropertyValue("--primary");
+      service.style.color = rootStyle.getPropertyValue("--text-light");
       return;
     }
-    service.style.backgroundColor=rootStyle.getPropertyValue("--background-light");
-    service.style.color=rootStyle.getPropertyValue("--text-dark");
-  })
+    service.style.backgroundColor =
+      rootStyle.getPropertyValue("--background-light");
+    service.style.color = rootStyle.getPropertyValue("--text-dark");
+  });
 
   const serviceImage = document.querySelector("#service-image");
   const serviceTitle = document.querySelector("#service-title");
@@ -306,6 +321,5 @@ const openServiceCard = (cardNumber) => {
   serviceDesc.innerText = serviceData[cardNumber].desc;
   serviceBtn.innerText = serviceData[cardNumber].title;
   serviceStat.innerText = serviceData[cardNumber].data.split("-")[0];
-  servicePara.innerText  = serviceData[cardNumber].data.split("-")[1];
-
-}
+  servicePara.innerText = serviceData[cardNumber].data.split("-")[1];
+};
