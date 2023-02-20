@@ -115,6 +115,9 @@ let productAnimated = false;
 const animateProductSection = () => {
   productAnimated = true;
 
+  
+  
+
   const products = document.querySelector("#products");
   const pi = document.querySelector("#product-intro");
   const pl = document.querySelector("#product-list");
@@ -156,7 +159,17 @@ const animateProductSection = () => {
     productAnimated && (products.style.width = "50rem");
   };
   pi5.addEventListener("transitionend", onAnimationEnd);
+  const buttons = document.querySelectorAll(".product-btn");
+  const zoomSpans = document.querySelectorAll(".zoom-span");
+  buttons.forEach((button, index) => {
+    // Revert buttons to original form if product animated.
+    button.classList.remove(`active${parseInt(index)}`);
+    zoomSpans[index].style.opacity = "0";
+    zoomSpans[index].style.position = "absolute";
+    button.style.paddingLeft = "1rem"
+  });
 };
+
 
 // Revert to original Product Section.
 const cancelProductSectionAnimation = () => {
@@ -187,6 +200,16 @@ const cancelProductSectionAnimation = () => {
   ic.classList.remove("icon-container--after");
   pi.classList.remove("product-intro--after");
   pt.classList.remove("product-text--after");
+
+  const buttons = document.querySelectorAll(".product-btn");
+  const zoomSpans = document.querySelectorAll(".zoom-span");
+  buttons.forEach((button, index) => {
+    // Revert buttons to original form if product animated.
+    button.classList.add(`active${parseInt(index)}`);
+    zoomSpans[index].style.opacity = "1";
+    zoomSpans[index].style.position = "relative";
+    // button.style.paddingLeft = "4rem"
+  });
 };
 
 // Scroll Position --- 95
@@ -194,10 +217,17 @@ document.addEventListener("scroll", (scroll) => {
   console.log(this.scrollY);
   if (this.scrollY > 170 && window.innerWidth > 1100) {
     !productAnimated && animateProductSection();
-  } else if (this.scrollY < 150 || window.innerWidth > 1100) {
+  } else if (this.scrollY < 150) {
     productAnimated && cancelProductSectionAnimation();
   }
 });
+
+document.addEventListener("resize", (event) => {
+  console.log("width",window.innerWidth, event);
+  if(window.innerWidth <= 1100) {
+    productAnimated && cancelProductSectionAnimation();
+  }
+})
 
 // Slide control
 
@@ -214,20 +244,24 @@ function showSlides(slideCount) {
   const zoomSpans = document.querySelectorAll(".zoom-span");
   // Set Button Style
   buttons.forEach((button, index) => {
+   window.scrollTo(0, 700);
+
     // No Change in style od first button
     if (index == 0) return;
     //Check cond from 2nd button
     if (index == parseInt(slideCount)) {
       button.classList.add(`active${parseInt(slideCount)}`);
-      zoomSpans[slideCount - 1].style.display = "inline";
+      zoomSpans[index-1].style.opacity = "1";
+      zoomSpans[index-1].style.position = "relative";
       return;
     }
     // Revert buttons to original form if other buttons are clicked.
     button.classList.remove(`active${parseInt(index)}`);
-    zoomSpans[index - 1].style.display = "none";
+    zoomSpans[index - 1].style.opacity = "0";
+    zoomSpans[index-1].style.position = "absolute";
+
   });
   // If animation hapened i.e. screen is bigger than 1000px
-  productAnimated && window.scrollTo(0, 740);
 
   // No margin while translation.
   slides.forEach((slide, index) => {

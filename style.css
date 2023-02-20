@@ -625,10 +625,14 @@ position: relative;
     align-items: flex-start;
 }
 .zoom-span{
-    display: none;
-    transition: all 1s;
+    /* display: none; */
+    opacity:1;
+    transition: all .2s;
+    position: relative;
+    /* left:1rem; */
 }
 .product-btn {
+    position: relative;
     outline: none;
     cursor: pointer;
     font-size: inherit;
@@ -637,7 +641,7 @@ position: relative;
     color: var(--text-light);
     border-radius: 2rem;
     margin-bottom: 2rem;
-    transition: width 1s;
+    transition: all .2s;
 }
 .product-btn:active {
     transform: scale(0.99);
