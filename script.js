@@ -191,10 +191,10 @@ const cancelProductSectionAnimation = () => {
 
 // Scroll Position --- 95
 document.addEventListener("scroll", (scroll) => {
-  console.log(window.innerWidth);
-  if (this.scrollY > 95 && window.innerWidth > 1025) {
+  console.log(this.scrollY);
+  if (this.scrollY > 170 && window.innerWidth > 1100) {
     !productAnimated && animateProductSection();
-  } else if (this.scrollY < 50) {
+  } else if (this.scrollY < 150 || window.innerWidth > 1100) {
     productAnimated && cancelProductSectionAnimation();
   }
 });
@@ -289,13 +289,21 @@ const serviceData = [
     data: "8- of the top 10 largest U.S. retailers choose Zoom",
   },
 ];
+
 const openServiceCard = (cardNumber) => {
   const productRightSection = document.querySelector(".right-section");
   const serviceDetail = document.querySelector(".service-detail");
+  const hideDetailsButton = document.querySelector(".hide-details-button");
   const serviceList = document.querySelectorAll(".service-card");
 
-  productRightSection.style.flexBasis = "25%";
-  serviceDetail.style.zIndex = 100;
+  if (window.innerWidth > 900) {
+    productRightSection.style.flexBasis = "25%";
+  }
+  serviceDetail.style.display = "flex";
+
+  if (window.innerWidth < 900){
+    hideDetailsButton.style.display = "block";
+  }
 
   // change color and bg on click
   serviceList.forEach((service, index) => {
@@ -323,3 +331,19 @@ const openServiceCard = (cardNumber) => {
   serviceStat.innerText = serviceData[cardNumber].data.split("-")[0];
   servicePara.innerText = serviceData[cardNumber].data.split("-")[1];
 };
+
+const hideServiceDetail = () => {
+  const serviceDetail = document.querySelector(".service-detail");
+  const hideDetailsButton = document.querySelector(".hide-details-button");
+  serviceDetail.style.display = "none";
+  hideDetailsButton.style.display = "none";
+}
+
+const showNavMenu = () => {
+  const navMenu = document.querySelector(".nav-menu");
+  if (navMenu.style.display == "flex") {
+    navMenu.style.display ="none";
+    return
+  }
+  navMenu.style.display = "flex"
+}
