@@ -1302,7 +1302,7 @@ white-space: nowrap;
     text-align: center;
   }
   .product-intro {
-    padding-left: 2rem;
+    padding: 1rem 2rem 0 1rem;
     height: auto;
   }
   .product-list {

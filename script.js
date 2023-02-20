@@ -244,7 +244,7 @@ function showSlides(slideCount) {
   const zoomSpans = document.querySelectorAll(".zoom-span");
   // Set Button Style
   buttons.forEach((button, index) => {
-   window.scrollTo(0, 700);
+   window.innerWidth> 1100 && window.scrollTo(0, 700);
 
     // No Change in style od first button
     if (index == 0) return;
